@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-2">
+    <img [src]="artist.images | noimage" class="img-thumbnail img-circle" alt="">
+  </div>
+
+  <div class="col">
+    <h3>{{ artist.name }}</h3>
+    <p>
+      <a [href]="artist.external_urls.spotify" target="_blank">
+        Go to artist´s page
+      </a>
+    </p>
+  </div>
+
+  <div class="col-4 text-right">
+    <button routerLink='/home' class="btn btn-outline-danger">Go home</button>
+  </div>
+</div>
+
+<div class="row mt-5 ">
+  <div class="col">
+    <table class="table table-white">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Album</th>
+          <th>Song</th>
+          <th>Preview</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let topTrack of topTracks">
+          <td>
+            <img [src]="topTrack.album.images | noimage" class="img-thumb" alt="">
+          </td>
+          <td>{{topTrack.album.name}}</td>
+          <td>{{topTrack.name}}</td>
+          <td>
+            <iframe [src]="topTrack.uri | domseguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>         
+           </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
